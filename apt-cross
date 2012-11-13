@@ -1,0 +1,100 @@
+#!/bin/bash
+
+conf_dir=/etc/apt-cross
+
+config_dir=$conf_dir/ac-build
+get_code_script=ac_get.sh
+build_script=ac_build.sh
+build_dep_script=ac_dep.sh
+
+source $conf_dir/ac_color
+
+echo -e ${RedF}"********************************************************************************\n"\
+ "This script is meant to build standard debian packages for a certain platform \n"\
+ "a little bit like emdebian, but just for individual packages \n"\
+"********************************************************************************"${Reset}
+
+package=$1
+target=$2
+
+print_help() {
+	echo "Use $0 with argument \"package\" \"target\" "
+	echo "  for example apt-cross libjpeg62 blackfin"
+}
+
+if [[ "$package" == "" ]]; then
+	print_help
+	exit 1
+fi
+
+if [[ "$target" == "" ]]; then
+	print_help
+	exit 1
+fi
+
+#install_dir=/data/source
+#mkdir -p "$install_dir"
+#cd "$install_dir"
+
+
+# Make sure that there are configuration files for this package
+check_config() {
+	# Check for configuration directory (is also allowed to be symbolic link)
+	echo "Configuration files and scripts are obtained from $config_dir"
+	echo "Check for $package files"
+	if [ ! -d "$config_dir/$package" ]; then
+		echo "Error: configuration directory \"$package\" does not exist in path \"$config_dir\""
+		exit 11
+	fi
+}
+
+# Get the code from for example a git/svn/bzr server or by apt-get source
+get_code() {
+	echo "Get the code as indicated in \"$get_code_script\""
+	if [ -e "$config_dir/$package/$get_code_script" ]; then
+		source $config_dir/$package/$get_code_script
+	fi
+}
+
+build_dep() {
+	echo "Build the dependencies as described in the \"$get_code_script\" script"
+	if [ -e "$config_dir/$package/$build_dep_script" ]; then
+		source $config_dir/$package/$build_dep_script
+	fi
+}
+
+# Build the thing
+build_bfin() {
+	check_config
+	get_code
+	build_dep
+	if [ -e "$config_dir/$package/$build_script" ]; then
+		chmod a+x $config_dir/$package/$build_script
+		$config_dir/$package/$build_script $target
+	fi
+}
+
+build_native() {
+	check_config
+	get_code
+	build_dep
+	if [ -e "$config_dir/$package/$build_script" ]; then
+		chmod a+x $config_dir/$package/$build_script
+		$config_dir/$package/$build_script $target
+	fi	
+}
+
+case "${target}" in
+        blackfin)
+                build_bfin
+                ;;
+        native)
+                build_native
+                ;;
+        *)
+                print_help
+		exit 0
+                ;;
+esac
+
+
