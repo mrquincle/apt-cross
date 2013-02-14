@@ -12,13 +12,15 @@ Compared to bitbake, apt-cross makes use of source code that actually compiles o
 ## What are the alternatives?
 There are no known alternatives. 
 
+In hindsight, I found that there was actually, at some time, a apt-cross utility. That version however required like 1GB of diskspace.
+
 ## How to install?
 To install:
 
 * mkdir -p /data # as normal user
 * sudo make install
 
-The configuration files will be copied to /opt/apt-cross, you can add your own if you'd like.
+The configuration files will be copied to /etc/apt-cross, you can add your own if you'd like.
 
 ## How to use?
 

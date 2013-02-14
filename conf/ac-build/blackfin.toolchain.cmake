@@ -32,6 +32,7 @@ SET(CMAKE_INSTALL_PREFIX ${DESTDIR}/usr/local)
 
 # add the libraries from the installation directory (if they have been build before)
 LINK_DIRECTORIES("${DESTDIR}/usr/local/lib")
+LINK_DIRECTORIES("${BFIN}/${COMPILER_TYPE}/runtime/usr/lib")
 
 # the following doesn't seem to work so well
 SET(CMAKE_INCLUDE_PATH ${DESTDIR}/usr/local/include)
