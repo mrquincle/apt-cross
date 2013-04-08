@@ -1,0 +1,11 @@
+--- Makefile	2013-04-08 23:47:42.600689377 +0200
++++ Makefile.new	2013-04-08 23:43:56.000000000 +0200
+@@ -3,7 +3,7 @@
+ all install:
+ 	$(MAKE) -C lib $@
+ ifeq ($(UNAME), Linux)
+-	$(MAKE) -C utils $@
++#	$(MAKE) -C utils $@
+ endif
+ 
+ sync-with-kernel:

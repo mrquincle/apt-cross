@@ -1,0 +1,11 @@
+--- Make.rules	2013-04-08 23:45:35.944694702 +0200
++++ Make.rules.new	2013-04-08 23:52:54.444676262 +0200
+@@ -7,7 +7,7 @@
+ CXXFLAGS := $(CFLAGS)
+ CFLAGS += -Wstrict-prototypes -Wmissing-prototypes
+ 
+-PREFIX = /usr/local
++PREFIX = $(PREFIX_PATH)/usr/local
+ LIBDIR = $(PREFIX)/lib
+ # subdir below LIBDIR in which to install the libv4lx libc wrappers
+ LIBSUBDIR = libv4l
