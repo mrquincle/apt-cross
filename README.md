@@ -27,7 +27,13 @@ The configuration files will be copied to /etc/apt-cross, you can add your own i
 
 After installation, you can compile e.g. opencv by:
 
-* ./apt-cross opencv blackfin
+* apt-cross opencv blackfin
+
+Or you can compile libjpeg for the Blackfin by:
+
+* apt-cross libjpeg62 blackfin
+
+It doesn't matter where you execute those commands.
 
 The downloaded source files you can now find in /data/source and the compiled results you can find in /data/blackfin e.g.
 
