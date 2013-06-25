@@ -17,7 +17,7 @@ In hindsight, I found that there was actually, at some time, a apt-cross utility
 ## How to install?
 To install:
 
-* git clone git@github.com:mrquincle/apt-cross
+* git clone git@github.com:mrquincle/apt-cross.git
 * mkdir -p /data # as normal user
 * sudo make install
 
