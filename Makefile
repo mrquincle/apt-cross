@@ -8,4 +8,4 @@ install:
 	mkdir -p /etc/apt-cross
 	chmod a+rw /etc/apt-cross
 	rsync -avzul conf/ /etc/apt-cross
-	cp apt-cross /usr/bin
+	install apt-cross $(DESTDIR)/usr/bin

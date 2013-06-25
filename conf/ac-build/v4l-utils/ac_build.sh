@@ -33,16 +33,10 @@ cd $extracted_dir_mask
 # 
 ################################################################################
 
-# Have /data/blackfin as default installation folder
-PREFIX_PATH=/data/$target
-
 echo "patch Makefile < ${confpath}/Makefile.patch"
 patch Makefile < ${confpath}/Makefile.patch
 echo "patch Make.rules < ${confpath}/Make.rules"
 patch Make.rules < ${confpath}/Make.rules.patch
-
-#echo "Configure"
-#./configure --host $HOST --prefix "${PREFIX_PATH}/usr"
 
 echo "Make and install"
 make

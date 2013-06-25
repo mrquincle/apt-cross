@@ -1,0 +1,5 @@
+# The following directory will contain downloaded source files and cross-compiled binaries
+CROSS_COMPILE_WORKSPACE=$HOME/mydata
+
+# The apt-cross installation folder
+AC_INSTALL_DIR=$HOME/mydata/source

@@ -2,6 +2,7 @@
 
 # Setup for autotools
 # see also blackfin.mk which might be more appropriate for cmake
+source /etc/apt-cross/ac-build/paths
 
 ####################################################################################
 # Path and prefix to the Blackfin compiler specific to uClinux
@@ -22,7 +23,7 @@ BFIN_PATH=/opt/uClinux/$COMPILER/bin
 export PATH="$PATH:$BFIN_PATH"
 
 # The target installation 
-export PREFIX_PATH=/data/blackfin
+export PREFIX_PATH=$CROSS_COMPILE_WORKSPACE/blackfin
 
 ####################################################################################
 # Where can the libraries and the include dirs be found?

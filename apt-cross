@@ -32,11 +32,6 @@ if [[ "$target" == "" ]]; then
 	exit 1
 fi
 
-#install_dir=/data/source
-#mkdir -p "$install_dir"
-#cd "$install_dir"
-
-
 # Make sure that there are configuration files for this package
 check_config() {
 	# Check for configuration directory (is also allowed to be symbolic link)

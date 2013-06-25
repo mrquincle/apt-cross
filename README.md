@@ -18,10 +18,11 @@ In hindsight, I found that there was actually, at some time, a apt-cross utility
 To install:
 
 * git clone git@github.com:mrquincle/apt-cross.git
-* mkdir -p /data # as normal user
+* # adjust the conf/ac-build/paths file, CROSS\_COMPILE\_WORKSPACE and AC\_INSTALL\_DIR to whatever you prefer
 * sudo make install
+* # after installation you can adjust this file in /etc/apt-cross/ac-build/paths
 
-The configuration files will be copied to /etc/apt-cross, you can add your own if you'd like.
+All the configuration files will be copied to /etc/apt-cross. You can add your own build files to ac-build/package_name.
 
 ## How to use?
 
@@ -35,7 +36,7 @@ Or you can compile libjpeg for the Blackfin by:
 
 It doesn't matter where you execute those commands.
 
-The downloaded source files you can now find in /data/source and the compiled results you can find in /data/blackfin e.g.
+The downloaded source files you can now find in AC\_INSTALL\_DIR (by default $HOME/mydata/source) and the compiled results you can find by default in $HOME/mydata/blackfin e.g. when the TARGET has been the blackfin microcontroller.
 
 ## Where can I read more?
 Nowhere... for now. :-)

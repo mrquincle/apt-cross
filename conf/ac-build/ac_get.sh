@@ -1,10 +1,10 @@
 #!/bin/bash
 
 source /etc/apt-cross/ac_color
+source /etc/apt-cross/ac-build/paths
 
-ac_install_dir=/data/source
-mkdir -p "$ac_install_dir"
-export AC_INSTALL_DIR="$ac_install_dir"
+export AC_INSTALL_DIR="$AC_INSTALL_DIR"
+mkdir -p "$AC_INSTALL_DIR"
 
-echo -e ${OrangeF}"Create $ac_install_dir if it does not exist and export as AC_INSTALL_DIR variable"${FReset}
+echo -e ${OrangeF}"Create $AC_INSTALL_DIR if it does not exist and export as AC_INSTALL_DIR variable"${FReset}
 
