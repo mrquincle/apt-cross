@@ -47,7 +47,7 @@ SET(CMAKE_LINKER		${COMPILER_TYPE_PREFIX}ld)
 # http://qmcpack.cmscc.org/getting-started/using-cmake-toolchain-file
 
 IF ("${CROSS_COMPILE_WORKSPACE}" STREQUAL "") 
-	MESSAGE(FATAL "CROSS_COMPILE_WORKSPACE should have been defined in ${CONFIG_FILE})
+	MESSAGE(FATAL "CROSS_COMPILE_WORKSPACE should have been defined in ${CONFIG_FILE}")
 ENDIF()
 
 # set the installation root (should contain usr/local and usr/lib directories)

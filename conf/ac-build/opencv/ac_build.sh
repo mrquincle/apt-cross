@@ -47,7 +47,7 @@ if [[ "$target" == "native" ]]; then
 fi
 
 source /etc/apt-cross/ac-build/ac_get.sh
-if [ ! NATIVE_BUILD ]; then
+if [ ! $NATIVE_BUILD ]; then
 	source /etc/apt-cross/ac-platform/$target.sh
 fi
 
@@ -60,7 +60,7 @@ echo -e ${YellowF}" Working directory: `pwd`" ${Reset}
 # Use cmake system
 ################################################################################
 
-if [ ! NATIVE_BUILD ]; then
+if [ ! $NATIVE_BUILD ]; then
 	echo "Copy cmake cross-compile files"
 	cp --remove-destination /etc/apt-cross/ac-build/$target.toolchain.cmake .
 	cp --remove-destination /etc/apt-cross/ac-build/$target.initial.cmake .
@@ -162,15 +162,13 @@ build() {
         set_timing
         set_logging
  
-	if [ ! NATIVE_BUILD ]; then	
-	        echo "We use the toolchain and disable the tests because of some awkward error"
-	        echo "Note that CMAKE_TOOLCHAIN_FILE will only be used on the first run"
-	        echo "it is not allowed to change an existing build tree"
-	        echo "see: http://www.cmake.org/pipermail/cmake/2011-February/042554.html"
-	        cmake -C ../$target.initial.cmake -DCMAKE_TOOLCHAIN_FILE=../$target.toolchain.cmake \
-			-DCMAKE_CXX_FLAGS="-O2 -g" \
-			# -DINSTALL_C_EXAMPLES:BOOL=TRUE \
-			..
+	if [ ! $NATIVE_BUILD ]; then	
+		echo "We use the toolchain and disable the tests because of some awkward error"
+		echo "Note that CMAKE_TOOLCHAIN_FILE will only be used on the first run"
+		echo "it is not allowed to change an existing build tree"
+		echo "see: http://www.cmake.org/pipermail/cmake/2011-February/042554.html"
+		cmake -C ../$target.initial.cmake -DCMAKE_TOOLCHAIN_FILE=../$target.toolchain.cmake \
+			-DCMAKE_CXX_FLAGS="-O2 -g" ..
 	else
 	        cmake -DCMAKE_CXX_FLAGS="-O2 -g" ..		
 	fi
@@ -184,7 +182,7 @@ build() {
 	echo "Note that this does concern only a subset (10) and not from the install path, but the build path"
 }
 
-if [ ! NATIVE_BUILD ]; then	
+if [ ! $NATIVE_BUILD ]; then	
 	echo "Build for platform $target"
 else
 	echo "Build for native platform"
