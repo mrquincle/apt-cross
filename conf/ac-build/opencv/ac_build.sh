@@ -136,7 +136,7 @@ check_warnings() {
 }
  
 make_install_and_check() {
-	INSTALL="install/strip"
+	INSTALL="install"
         MAKE_COMMAND="${MAKE_VERBOSITY} ${MAKE_TIMING} make -j${CORES} ${INSTALL} ${PIPE_TO_FILE}"
         echo "We will perform the following command: "
         echo "  ${MAKE_COMMAND}"
