@@ -38,6 +38,11 @@ patch Makefile < ${confpath}/Makefile.patch
 echo "patch Make.rules < ${confpath}/Make.rules"
 patch Make.rules < ${confpath}/Make.rules.patch
 
+if [[ "$target"  == "blackfin" ]]; then
+	echo "Adjust fork to vfork"
+	sed -i 's|[[:space:]]fork()|[[:space:]]vfork()|g' lib/libv4lconvert/helper.c
+fi
+
 echo "Make and install"
 make
 make install
